@@ -1,0 +1,158 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* The Mindful Mentor Design System - Futuristic Mental Health App
+All colors MUST be HSL for consistent theming.
+*/
+
+@layer base {
+  :root {
+    /* Core brand colors - Deep space to calming teal */
+    --background: 222 47% 11%;
+    --background-secondary: 215 28% 17%;
+    --foreground: 0 0% 100%;
+    --foreground-muted: 210 40% 92%;
+
+    /* Glass morphism surfaces */
+    --glass: 222 47% 11%;
+    --glass-border: 168 76% 50%;
+    --glass-foreground: 0 0% 100%;
+
+    /* Primary gradient - Deep space blue to calming teal */
+    --primary: 219 66% 9%;
+    --primary-bright: 168 76% 50%;
+    --primary-foreground: 0 0% 100%;
+
+    /* Secondary gradient - Purple to pink */
+    --secondary: 250 89% 66%;
+    --secondary-bright: 330 81% 60%;
+    --secondary-foreground: 0 0% 100%;
+
+    /* Accent - Warm gold for interactions */
+    --accent: 45 93% 51%;
+    --accent-foreground: 222 47% 11%;
+
+    /* Mood colors */
+    --mood-sad: 220 70% 60%;
+    --mood-happy: 45 93% 51%;
+    --mood-frustrated: 15 85% 55%;
+
+    /* Interactive states */
+    --hover: 168 76% 50%; 
+    --focus: 45 93% 51%;
+    --border: 222 47% 25%;
+    --input: 222 47% 20%;
+    --ring: 168 76% 50%;
+
+    /* Status colors */
+    --success: 142 71% 45%;
+    --warning: 45 93% 51%;
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 0 0% 100%;
+
+    /* Card and surface variants */
+    --card: 222 47% 15%;
+    --card-hover: 222 47% 18%;
+    --card-foreground: 0 0% 100%;
+
+    --popover: 222 47% 15%;
+    --popover-foreground: 0 0% 100%;
+
+    --muted: 222 47% 20%;
+    --muted-foreground: 210 40% 70%;
+
+    --radius: 1rem;
+
+    /* Gradients for beautiful effects */
+    --gradient-primary: linear-gradient(135deg, hsl(219 66% 9%), hsl(168 76% 50%));
+    --gradient-secondary: linear-gradient(135deg, hsl(250 89% 66%), hsl(330 81% 60%));
+    --gradient-glass: linear-gradient(135deg, hsl(222 47% 11% / 0.8), hsl(215 28% 17% / 0.9));
+    --gradient-hero: linear-gradient(135deg, hsl(222 47% 11%), hsl(215 28% 17%));
+
+    /* Animations */
+    --transition-smooth: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    --transition-bounce: all 0.3s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+
+    /* Glow effects */
+    --glow-primary: 0 0 30px hsl(168 76% 50% / 0.3);
+    --glow-secondary: 0 0 30px hsl(250 89% 66% / 0.3);
+    --glow-accent: 0 0 30px hsl(45 93% 51% / 0.3);
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground font-sans;
+    background: var(--gradient-hero);
+    min-height: 100vh;
+  }
+
+  /* Glass morphism utility */
+  .glass {
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+  }
+
+  /* Glow effects */
+  .glow-primary {
+    box-shadow: var(--glow-primary);
+  }
+
+  .glow-secondary {
+    box-shadow: var(--glow-secondary);
+  }
+
+  .glow-accent {
+    box-shadow: var(--glow-accent);
+  }
+
+  /* Smooth transitions for all interactive elements */
+  button, input, textarea, .interactive {
+    transition: var(--transition-smooth);
+  }
+
+  /* Floating animation */
+  @keyframes float {
+    0%, 100% { transform: translateY(0px) rotateY(0deg); }
+    50% { transform: translateY(-10px) rotateY(5deg); }
+  }
+
+  .float {
+    animation: float 6s ease-in-out infinite;
+  }
+
+  /* Pulse glow animation */
+  @keyframes pulseGlow {
+    0%, 100% { 
+      box-shadow: 0 0 20px hsl(var(--primary-bright) / 0.3);
+    }
+    50% { 
+      box-shadow: 0 0 40px hsl(var(--primary-bright) / 0.6);
+    }
+  }
+
+  .pulse-glow {
+    animation: pulseGlow 3s ease-in-out infinite;
+  }
+
+  /* Gradient text */
+  .gradient-text {
+    background: var(--gradient-primary);
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-size: 200% 200%;
+    animation: gradientShift 3s ease-in-out infinite;
+  }
+
+  @keyframes gradientShift {
+    0%, 100% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+  }
+}
